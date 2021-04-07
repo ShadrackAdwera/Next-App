@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import Hero from '../components/home/hero/hero';
+
 export default function Home() {
   return (
     <div>
@@ -7,8 +9,7 @@ export default function Home() {
         <title>Next Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Wazzzzahhhhhh!???</h1>
-
+      <Hero />
     </div>
   )
 }
