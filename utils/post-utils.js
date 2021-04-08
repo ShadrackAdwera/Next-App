@@ -29,6 +29,6 @@ return sortedPosts;
 
 export const getFeaturedPosts = () => {
     const allPosts = getAllPosts();
-    const featuredPosts = allPosts.map(post=>post.isFeatured);
+    const featuredPosts = allPosts.filter(post=>post.isFeatured);
     return featuredPosts;
 }
