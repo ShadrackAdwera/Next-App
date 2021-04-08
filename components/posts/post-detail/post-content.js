@@ -1,3 +1,5 @@
+import ReactMakdown from 'react-markdown';
+
 import PostHeader from './post-header';
 import styles from './post-content.module.css';
 
@@ -13,7 +15,9 @@ const DUMMY_POST = {
 const PostContent = props => {
     return <article className={styles.content}>
         <PostHeader title={DUMMY_POST.title} image={`/images/posts/${DUMMY_POST.slug}/${DUMMY_POST.image}`}/>
+        <ReactMakdown>
         {DUMMY_POST.content}
+        </ReactMakdown>
     </article>
 }
 
