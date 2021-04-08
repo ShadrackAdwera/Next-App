@@ -22,5 +22,13 @@ const getPostData = (fileName) => {
 
 export const getAllPosts = () => {
 const postFiles = fs.readdirSync(postsPath);
+const allPosts = postFiles.map(postFile => getPostData(postFile));
+const sortedPosts = allPosts.sort((a,b)=> a.date>b.date? -1 : 1);
+return sortedPosts;
+}
 
+export const getFeaturedPosts = () => {
+    const allPosts = getAllPosts();
+    const featuredPosts = allPosts.map(post=>post.isFeatured);
+    return featuredPosts;
 }
