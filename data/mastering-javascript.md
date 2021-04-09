@@ -11,13 +11,11 @@ JavaScript powers the web - it's **the** most important programming language you
 For example, you should understand code like this:
 
 ```js
-const basics = 'Okay, that should not be too difficult actually';
+const numArray = [1,2,3,4,5,6,7];
 
-function printBasics() {
-  console.log(basics):
-}
+const sum = numArray.reduce((prev,next)=>prev+next,0);
 
-printBasics();
+console.log(sum);
 ```
 
 Learn more about it [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript).
