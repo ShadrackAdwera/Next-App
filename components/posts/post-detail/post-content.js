@@ -8,8 +8,18 @@ const PostContent = props => {
   const { title, content, slug, image} = props.post;
 
   const customRendered = {
-    image(image) {
-      return <Image src={`/images/posts/${slug}/${image.src}`} alt={image.alt} width={600} height={300} layout='responsive'/>
+    // image(image) {
+    //   return <Image src={`/images/posts/${slug}/${image.src}`} alt={image.alt} width={600} height={300} layout='responsive'/>
+    // },
+    paragraph(paragraph) {
+      const { node } = paragraph;
+      if(node.children[0].type==='image') {
+        const image = node.children[0];
+        return <div className={styles.image}>
+          <Image src={`/images/posts/${slug}/${image.url}`} alt={image.alt} width={600} height={300} layout='responsive'/>
+        </div>
+      }
+      return <p>{paragraph.children}</p>
     }
   }
 
