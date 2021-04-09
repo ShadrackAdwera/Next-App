@@ -13,8 +13,8 @@ const handler = (req, res) => {
         res.status(422).json({message: 'Invalid inputs'});
         return;
     }
-    const message = { name,email, message };
-    console.log(message);
+    const info = { name,email, message };
+    console.log(info);
     res.status(201).json({message: 'Message sent!'});
   }
 };
