@@ -1,4 +1,6 @@
-const handler = (req, res) => {
+import { MongoClient } from 'mongodb';
+
+const handler = async(req, res) => {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
 
@@ -14,7 +16,23 @@ const handler = (req, res) => {
         return;
     }
     const info = { name,email, message };
-    console.log(info);
+    let client;
+    try {
+      client =  await MongoClient.connect(process.env.DB_URL)
+    } catch (error) {
+      res.status(500).json({message: error.message || 'An error occured, try again'});
+      return;
+    }
+    
+    try {
+     const db = client.db();
+     await db.collection('next-blog').insertOne(info);
+     client.close();
+    } catch (error) {
+      client.close();
+      res.status(500).json({message: error.message || 'An error occured, try again'});
+      return; 
+    }
     res.status(201).json({message: 'Message sent!'});
   }
 };
