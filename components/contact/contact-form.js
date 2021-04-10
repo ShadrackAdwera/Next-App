@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
+import Feedback from '../ui/notification';
 import styles from './contact-form.module.css';
 
 const ContactForm = props => {
@@ -15,6 +16,9 @@ const ContactForm = props => {
         const message = messageRef.current.value;
         const data = { name, email, message };
         props.onSubmitData(data);
+        nameRef.current.value = '';
+        emailRef.current.value = '';
+        messageRef.current.value = '';
     } 
 
     return <section className={styles.contact}>
