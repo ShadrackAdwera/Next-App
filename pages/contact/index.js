@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 
 import Notification from '../../components/ui/notification';
 import ContactForm from '../../components/contact/contact-form';
@@ -6,6 +6,15 @@ import ContactForm from '../../components/contact/contact-form';
 const ContactPage = () => {
   let notification;
   const [requestStatus, setRequestStatus] = useState();
+
+  useEffect(()=>{
+    if(requestStatus==='success' || requestStatus==='error') {
+        const timer = setTimeout(()=>{
+            setRequestStatus();
+          },3000);
+          return () => clearTimeout(timer);
+    }
+  }, [requestStatus])
 
   const onSubmitData = async (data) => {
     setRequestStatus('pending');
@@ -22,9 +31,6 @@ const ContactPage = () => {
         throw new Error(resData.message || 'An error occured');
       }
       setRequestStatus('success');
-      setTimeout(()=>{
-        setRequestStatus();
-      },3000);
     } catch (error) {
       setRequestStatus('error');
     }
