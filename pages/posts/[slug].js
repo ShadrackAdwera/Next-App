@@ -9,7 +9,7 @@ const Post = (props) => {
     <Fragment>
       <Head>
       <title>{post.title}</title>
-      <meta name="description" content={props.shortText} />
+      <meta name="description" content={post.shortText} />
       </Head>
       <PostContent post={post} />;
     </Fragment>
