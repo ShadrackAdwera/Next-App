@@ -12,6 +12,7 @@ export default function Home(props) {
       <Head>
         <title>Next Blog</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Programming Blogs" />
       </Head>
       <Hero />
       <FeaturedPosts posts={featuredPosts} />

@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { Fragment, useState, useEffect } from 'react';
 
 import Notification from '../../components/ui/notification';
@@ -60,6 +61,10 @@ const ContactPage = () => {
 
   return (
     <Fragment>
+      <Head>
+        <title>Contact Me</title>
+        <meta name="description" content="Hit me up" />
+      </Head>
       <ContactForm onSubmitData={onSubmitData} />
       {notification && (
         <Notification
